@@ -27,7 +27,7 @@ componentDidMount(){
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React Home Library</h2>
         </div>
-         <Booklist books={this.state.books} city="Rome"/>
+         <Booklist books={this.state.books} />
          <br/>
          <Bookform />
       </div>
