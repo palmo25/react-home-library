@@ -1,7 +1,8 @@
 
 import React from 'react'
 import axios from 'axios'
-import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch } from 'react-axios'
+import {Table} from 'react-bootstrap'
+
 
 class Booklist extends React.Component{
   constructor(){
@@ -20,13 +21,32 @@ componentDidMount(){
 
  render(){
    return(
-     <div>
+     <div className="container">
         <h2>Booklist</h2>
-        <ul>
+        <Table striped bordered condensed hover>
+          <thead>
+          <tr>
+           <th>#</th>
+           <th>Author</th>
+           <th>Title</th>
+         </tr>
+           </thead>
+           <tbody>
+
         {this.state.books.map((book) =>
-              <li key={book.id}> {book.name}</li>
+              <tr key={book.id}>
+
+              <td > {book.id}</td>
+              <td></td>
+              <td> {book.name}</td>
+            
+              </tr>
         )}
-        </ul>
+
+        </tbody>
+        </Table>
+
+        <button className="btn btn-success">Button Test</button>
 
    </div>
     )
