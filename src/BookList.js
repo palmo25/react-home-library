@@ -1,28 +1,13 @@
 
-import React from 'react'
-import axios from 'axios'
+import React, {Component} from 'react'
 import {Table} from 'react-bootstrap'
 
-
-class Booklist extends React.Component{
-  constructor(){
-    super();
-   this.state = {
-    books: [],
-  }
-}
-
-componentDidMount(){
-  axios.get('http://localhost:3000/books.json')
-   .then((res) => {
-     this.setState({books:res.data});
-   });
-}
-
- render(){
+class Booklist extends Component{
+  render(){
    return(
      <div className="container">
         <h2>Booklist</h2>
+        <p>{this.props.city} </p>
         <Table striped bordered condensed hover>
           <thead>
           <tr>
@@ -33,21 +18,16 @@ componentDidMount(){
            </thead>
            <tbody>
 
-        {this.state.books.map((book) =>
-              <tr key={book.id}>
-
-              <td > {book.id}</td>
-              <td></td>
-              <td> {book.name}</td>
-            
-              </tr>
-        )}
+          {this.props.books.map((book) =>
+                <tr key={book.id}>
+                  <td > {book.id} </td>
+                  <td>  {book.author} </td>
+                  <td>  {book.name} </td>
+                </tr>
+          )}
 
         </tbody>
         </Table>
-
-        <button className="btn btn-success">Button Test</button>
-
    </div>
     )
   }
